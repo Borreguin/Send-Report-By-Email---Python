@@ -12,7 +12,7 @@ from email.mime.image import MIMEImage
 script_path = os.path.dirname(os.path.abspath(__file__))
 im_path = os.path.join(init.project_path, "_reports")
 template_path = os.path.join(init.project_path, "templates")
-html_error_template_path = os.path.join(template_path, "reportar_error.html")
+html_error_template_path = os.path.join(template_path, "error_report.html")
 html_report_template_path = os.path.join(template_path, "supervision_servidores_sps.html")
 log_path = os.path.join(init.project_path, "logs")
 log = init.default_log
@@ -42,9 +42,6 @@ def send_mail(msg_to_send:str, subject, recipients: list, from_email, image_list
                     # redefine src= in html file (cid:image1)
                     msg_to_send = msg_to_send.replace(image, f"cid:image{ix}")
                     im_to_append.append(to_check)
-
-        # server configuration:
-        SERVER = init.mail_server
 
         # create message object instance
         msg = MIMEMultipart('related')
@@ -82,13 +79,17 @@ def send_mail(msg_to_send:str, subject, recipients: list, from_email, image_list
             part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
             msg.attach(part)
 
+        # server configuration:
+        SERVER = init.mail_server
         # create server
         server = smtplib.SMTP(SERVER)
 
         server.starttls()
 
         # Login Credentials for sending the mail
-        # server.login(msg['From'], password)
+        if init.password is not None and init.from_email is not None:
+            msg['From'] = init.from_email
+            server.login(msg['From'], init.password)
 
         # send the message via the server.
         server.sendmail(msg['From'], recipients, msg.as_string())

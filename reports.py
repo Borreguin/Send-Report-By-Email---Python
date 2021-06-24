@@ -40,7 +40,7 @@ def run_all_reports(test=False):
         return False, msg
     n_reports = 0
     for report_id in df_config.index:
-        group = "test" if test else "usuarios"
+        group = "test" if test else "users"
         success, msg = send_report(report_id, df_config.loc[report_id].to_dict(), group)
         if success:
             n_reports += 1
@@ -56,8 +56,8 @@ def send_error_report(test=False, report_id=None, msg_error=None):
     if test:
         success, (users, from_email), msg = u.get_user_list(report_id, "test")
     else:
-        success, (users, from_email), msg = u.get_user_list(report_id, "administradores")
-    template_path = os.path.join(init.TEMPLATE_REPO, "reportar_error.html")
+        success, (users, from_email), msg = u.get_user_list(report_id, "administrators")
+    template_path = os.path.join(init.TEMPLATE_REPO, "error_report.html")
     html_str = codecs.open(template_path, 'r', 'utf-8').read()
     html_str = html_str.replace("#ERROR", msg_error)
     log_path = os.path.join(init.log_path, "mail.log")

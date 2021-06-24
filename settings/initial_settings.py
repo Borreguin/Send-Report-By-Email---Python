@@ -28,7 +28,9 @@ config = raw_config
 
 """ configuracion de mail """
 mail_server = config["mail_server"]
-error_account = "noreply@cenace.gob.ec"
+password = config["password"]
+from_email = config["from_email"]
+error_account = "noreply@account.com"
 
 """ Log file settings: """
 log_name = config["ROTATING_FILE_HANDLER"]["filename"]

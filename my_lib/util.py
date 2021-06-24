@@ -18,7 +18,7 @@ fmt_dd_mm_yyyy_hh_mm = "dd/MMM/yy HH:mm"
 fmt_dd_mm_yyyy = "dd/MMM/yyyy"
 fmt_dd_mm_yy_ = "dd_MMM_yyyy"
 
-lb_grupo = "Grupo"
+lb_group = "Group"
 lb_email = "Email"
 lb_report_id = "Report_ID"
 lb_file_path = "File_Path"
@@ -54,11 +54,11 @@ def read_excel(excel_file, sheet_name):
 
 def get_user_list(id_report, group:str):
     file_path = os.path.join(init.setting_path, "file_config.xlsx")
-    success, df, msg = read_excel(file_path, "usuarios")
+    success, df, msg = read_excel(file_path, "users")
     if success:
 
         if id_report is None:
-            mask = df[lb_grupo] == group
+            mask = df[lb_group] == group
             df = df[mask]
             users = list()
             for u in list(df[lb_email]):
@@ -66,7 +66,7 @@ def get_user_list(id_report, group:str):
             from_email = init.error_account
             users = list(set(users))
         else:
-            df.set_index(lb_grupo, inplace=True)
+            df.set_index(lb_group, inplace=True)
             mask = df[lb_report_id] == id_report
             df = df[mask]
             users = str(df[lb_email].loc[group]).split(";")
@@ -77,7 +77,7 @@ def get_user_list(id_report, group:str):
 
 def get_configurations():
     file_path = os.path.join(init.setting_path, "file_config.xlsx")
-    success, df, msg = read_excel(file_path, "configuracion")
+    success, df, msg = read_excel(file_path, "configurations")
     if success:
         mask = (df[lb_active] == "x")
         df = df[mask]

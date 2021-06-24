@@ -12,6 +12,8 @@ config["name"] = "Send Mail Application"
 config["version"] = "0.1"
 config["DEBUG"] = False
 config["mail_server"] = "Your_IP_mail_server"
+config["from_email"] = "my.email.to.send@account.com"
+config["password"] = None
 
 # LOG CONFIGURATION
 config["ROTATING_FILE_HANDLER_HELP"] = "https://docs.python.org/3.6/library/logging.handlers.html#logging.handlers.RotatingFileHandler.__init__",
