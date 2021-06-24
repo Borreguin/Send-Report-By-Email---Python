@@ -1,12 +1,12 @@
 # SendReportByEmail
 This application sends reports as emails, the reports could add images or attached files. This simple 
-tool use an Excel file to configure each report.
+tool uses an Excel file to configure each report (emails and templates).
 
-In addition, using some text processing inside the send_report function one may create custom reports.
+In addition, using some text processing inside the [send_report](/reports.py) function one may create custom reports.
 
 ## How to configurate:
 
-1. Install all the [needed packages](/installer/installer.py) (execute installer.bat if you are on Windows)
+1. Install all the [needed packages](/installer) (execute installer.bat if you are on Windows)
 2. Open the [setting's file](/settings/config.py) and configure the Mail Server IP. If your email server 
 needs an user's account to send emails then configure *from_email* and *password* parameters otherwise you 
 may continue with the next step.
