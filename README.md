@@ -14,8 +14,10 @@ may continue with the next step.
 send by an unique identification. There you may specify users and templates:
 ![user_and_template_configurations](/documents/email_report_configuration.png?raw=true)
 
-4. Edit/create the HTML template that you need in the [template's folder](/templates). Don't forget to make 
+4. Edit/create the HTML template that you need inside the [templates folder](/templates). Don't forget to make 
 the correspondence between the Excel File and the name of the template.
+![template_configurations](/documents/templates_config.png?raw=true)
+
 5. Executing the [test file](/test.py) you should send mails to the test's users, 
 and executing the [main file](/main.py) you should send mails to the user group.
 
