@@ -54,11 +54,10 @@ else:
     DEBUG = config["DEBUG"]
 
 """" MODULES REPO CONFIGURATION """
-# Source repo es una ubicación específica en caso de producción
-# pero en caso de pruebas, es una ubicación local llamada "source"
 REPORT_REPO = config["REPORT_REPO"]
 TEMPLATE_REPO = config["TEMPLATE_REPO"]
-REPOS = [REPORT_REPO, TEMPLATE_REPO]
+LOG_REPO = config["LOG_REPO"]
+REPOS = [REPORT_REPO, TEMPLATE_REPO, LOG_REPO]
 
 FINAL_REPO = list()
 for repo in REPOS:
@@ -67,7 +66,7 @@ for repo in REPOS:
         os.makedirs(this_repo)
     FINAL_REPO.append(this_repo)
 
-REPORT_REPO, TEMPLATE_REPO = FINAL_REPO
+REPORT_REPO, TEMPLATE_REPO, LOG_REPO = FINAL_REPO
 
 class LogDefaultConfig():
     """

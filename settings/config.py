@@ -23,6 +23,7 @@ config["ROTATING_FILE_HANDLER_LOG_LEVEL"] = {"value": "info", "options": ["error
 # Repositories (folders locales o externos de la aplicación)
 config["REPORT_REPO"] = "_reports"
 config["TEMPLATE_REPO"] = "templates"
+config["LOG_REPO"] = "logs"
 
 config["SUPPORTED_FORMAT_DATES"] = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%Y-%m-%d", "%Y-%m-%d %H:%M:%S.%f"]
 config["DEFAULT_DATE_FORMAT"] = "%Y-%m-%d %H:%M:%S"
